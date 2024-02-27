@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sub_navigation_pages",
+  "info": {
+    "name": "Sub Navigation Pages"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Body": {
+      "type": "richtext"
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}

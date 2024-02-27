@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "senior_instructors",
+  "info": {
+    "name": "Senior Instructors",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "AccordionTitleButton": {
+      "type": "string"
+    },
+    "AccordionContentText": {
+      "type": "richtext"
+    },
+    "InstructorCity": {
+      "type": "string"
+    }
+  }
+}

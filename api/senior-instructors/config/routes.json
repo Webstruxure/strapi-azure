@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/senior-instructors",
+      "handler": "senior-instructors.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/senior-instructors/count",
+      "handler": "senior-instructors.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/senior-instructors/:id",
+      "handler": "senior-instructors.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/senior-instructors",
+      "handler": "senior-instructors.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/senior-instructors/:id",
+      "handler": "senior-instructors.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/senior-instructors/:id",
+      "handler": "senior-instructors.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
