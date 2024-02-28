@@ -32,6 +32,11 @@ jobs:
         push: true
         tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_ac4b8000e3114b26a249294a1d20247e }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
+    
+    - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_GITHUB_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
