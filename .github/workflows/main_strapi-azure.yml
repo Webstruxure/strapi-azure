@@ -34,9 +34,9 @@ jobs:
         file: ./Dockerfile
 
     - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_GITHUB_TOKEN }}
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_GITHUB_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
