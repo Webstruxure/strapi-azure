@@ -54,4 +54,4 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_94f890056d6f4861ac7dec893dbc0a24 }}
         images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_6a23a0cf958b4b489a7bd04689c4a394 }}/appsvc/staticsite:${{ github.sha }}'
-# comment to push
+# comment to push2
