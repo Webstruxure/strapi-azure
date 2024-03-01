@@ -10,7 +10,8 @@ WORKDIR /usr/src/app
 
 # install deps
 COPY package*.json /usr/src/app/
-COPY yarn.lock /usr/src/app/
+COPY package-lock.json /usr/src/app/
+# COPY yarn.lock /usr/src/app/
 RUN npm install
 
 COPY . /usr/src/app
