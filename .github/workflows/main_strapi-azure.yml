@@ -5,8 +5,8 @@ name: JavaScript CI
 on: [push]
 
 env:
-  AZURE_WEBAPP_NAME: strapi-azure   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: './'      # set this back to './' if build fails
+  AZURE_WEBAPP_NAME: strapi-webapp-new   # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: './'      # set this back to './' if build fails 
   NODE_VERSION: '16.x'           # set this to the node version to use 
 
 jobs:
