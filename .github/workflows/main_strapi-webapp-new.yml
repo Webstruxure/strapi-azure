@@ -1,36 +1,51 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 
-# File: .github/workflows/workflow.yml
-name: JavaScript CI
+name: Build and deploy container app to Azure Web App - strapi-webapp-new
 
-on: [push]
-
-env:
-  AZURE_WEBAPP_NAME: strapi-webapp-new   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: './'      # set this back to './' if build fails 
-  NODE_VERSION: '16.x'           # set this to the node version to use 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
-    name: Build and Deploy
-    runs-on: ubuntu-latest
+  build:
+    runs-on: 'ubuntu-latest'
+
     steps:
-    - uses: actions/checkout@main
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v4
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to registry
+      uses: docker/login-action@v2
       with:
-        node-version: ${{ env.NODE_VERSION }}
-    - name: npm install, build, and test
-      run: |
-        # Build and test the project, then
-        # deploy to Azure Web App.
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-      working-directory: ./
-    - name: 'Deploy to Azure WebApp'
-      uses: azure/webapps-deploy@v3
-      with: 
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-# 
+        registry: https://strapicontainerwebapp.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_c6c48e0c60794e8ea7ae5e499d51e6a8 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_a69dd385e4ca4e0fb08dda1f85857ec9 }}
+
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: strapicontainerwebapp.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c6c48e0c60794e8ea7ae5e499d51e6a8 }}/strapiimage:${{ github.sha }}
+        file: ./Dockerfile
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'strapi-webapp-new'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4bba4c5d239344869113b0998c7366c4 }}
+        images: 'strapicontainerwebapp.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c6c48e0c60794e8ea7ae5e499d51e6a8 }}/strapiimage:${{ github.sha }}'
