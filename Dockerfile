@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 COPY package*.json /usr/src/app/
 COPY package-lock.json /usr/src/app/
 # COPY yarn.lock /usr/src/app/
-RUN npm install
+RUN npm install --force
 
 COPY . /usr/src/app
 
