@@ -40,3 +40,4 @@ jobs:
           # output_location: ${{ env.AZURE_STATIC_WEB_APPS_OUTPUT_LOCATION }}
         env:
           SKIP_DEPLOY_ON_MISSING_SECRETS: true
+#
