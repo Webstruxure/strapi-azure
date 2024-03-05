@@ -38,3 +38,4 @@ jobs:
           # If the build output location is different from the root of the repository, specify it here
           # app_location: ${{ env.AZURE_STATIC_WEB_APPS_APP_LOCATION }}
           # output_location: ${{ env.AZURE_STATIC_WEB_APPS_OUTPUT_LOCATION }}
+          deployment_action: 'upload'
