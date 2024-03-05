@@ -112,3 +112,4 @@ exports
 *.cache
 build
 .strapi-updater.json
+/github/workspace/.cache/admin/src/components/Fonts/@buffetjs/styles/webfonts/Lato-Black.woff2
