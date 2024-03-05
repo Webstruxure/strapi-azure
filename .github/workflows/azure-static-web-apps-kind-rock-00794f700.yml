@@ -14,6 +14,7 @@ env:
   AZURE_STATIC_WEB_APPS_APP_LOCATION: '/'  # Set this to the location of your app files
   AZURE_STATIC_WEB_APPS_OUTPUT_LOCATION: 'build'  # Set this to the directory where the built app files are located
   NODE_VERSION: '16.x'  # Set this to the node version to use 
+  SKIP_DEPLOY_ON_MISSING_SECRETS: true
 
 jobs:
   build-and-deploy:
@@ -37,6 +38,7 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
+          deployment_action: 'upload'
 
   close_pull_request_job:
     name: Close Pull Request Job
