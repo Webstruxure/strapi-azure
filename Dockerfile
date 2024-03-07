@@ -1,6 +1,6 @@
 FROM node:12-alpine
 
-ENV PORT 1337
+ENV PORT 80
 ENV HOST 0.0.0.0
 ENV NODE_ENV production
 
@@ -17,6 +17,6 @@ RUN npm install --force
 COPY . /usr/src/app
 
 RUN npm run build
-EXPOSE 1337
+EXPOSE 80
 
 CMD ["npm", "start"]
