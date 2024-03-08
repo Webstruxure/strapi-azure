@@ -7,7 +7,8 @@
     "develop": "strapi develop",
     "start": "NODE_ENV=production node server.js",
     "build": "NODE_ENV=production npm install --yes --force && strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "install-sharp": "npm install --platform=linuxmusl --arch=x64 sharp"
   },
   "dependencies": {
     "@buffetjs/styles": "^3.3.8",
