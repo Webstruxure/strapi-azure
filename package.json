@@ -33,7 +33,8 @@
     "strapi-plugin-users-permissions": "3.6.11",
     "strapi-utils": "3.6.11",
     "styled-components": "^5.3.3",
-    "video-react": "^0.16.0"
+    "video-react": "^0.16.0",
+    "winston": "^3.12.0"
   },
   "author": {
     "name": "A Strapi developer"
