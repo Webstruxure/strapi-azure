@@ -93,7 +93,6 @@ pids
 logs
 results
 node_modules
-!**/node_modules/winston
 .node_history
 
 ############################

@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:16-alpine
 
 ENV PORT 8080
 ENV HOST 0.0.0.0
@@ -12,7 +12,9 @@ WORKDIR /usr/src/app
 COPY package*.json /usr/src/app/
 COPY package-lock.json /usr/src/app/
 # COPY yarn.lock /usr/src/app/
-RUN npm install --force
+#RUN npm install --force
+RUN npm install strapi@latest --force
+
 
 COPY . /usr/src/app
 

@@ -18,6 +18,8 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_VERSION }}
+    - name: Set NODE_ENV to production
+      run: echo "NODE_ENV=production" >> $GITHUB_ENV
     - name: npm install, build, and test
       run: |
         # Build and test the project, then
