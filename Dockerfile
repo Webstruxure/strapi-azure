@@ -45,4 +45,9 @@ RUN npm run build
 
 EXPOSE 8080
 
+# Health check configuration
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD curl --fail http://localhost:8080 || exit 1
+
+
 CMD ["npm", "start"]
